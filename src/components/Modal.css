@@ -1,0 +1,17 @@
+.Modal {
+  position: fixed;
+  width: 80%;
+  height: 300px;
+  max-width: 500px;
+  left: 50%;
+  margin-left: -250px;
+  background: #fff;
+  color: #000;
+  z-index: 10;
+}
+
+.Modal_CloseButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}

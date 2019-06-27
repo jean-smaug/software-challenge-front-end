@@ -3,24 +3,20 @@ import FlipMove from 'react-flip-move'
 
 import './ScanList.css'
 
-function ScanList ({ scans, users }) {
+function ScanList ({ scans, users, setUsers }) {
   return (
-    <div>
-      <div className='Header'>Scans:</div>
-      <div className='ScanList'>
-        <FlipMove>
-          {scans.map((scan) => {
-            const user = users.find(u => u.id === scan.scannedByUserId)
-            return (
-              <div className='ScanListItem' key={scan.id}>
-                {scan.name}
-                <div className='UserName'>by {user.name}</div>
-              </div>
-            )
-          })}
-        </FlipMove>
-      </div>
-    </div>
+    <FlipMove className='ScanList'>
+      {scans.map(scan => {
+        const user = users.find(u => u.id === scan.scannedByUserId)
+        return (
+          <div className='ScanList_Item' key={scan.id}>
+            {scan.name} by {user.name}
+            {scan.elevationMin}
+            {scan.elevationMax}
+          </div>
+        )
+      })}
+    </FlipMove>
   )
 }
 
