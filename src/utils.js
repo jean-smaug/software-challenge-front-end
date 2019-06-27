@@ -22,7 +22,6 @@ export function sortScansBy (sorter, scans, users) {
       return scans.sort((a, b) => compareStrings(a[sorter], b[sorter]))
 
     case 'username':
-
       return scans.sort((a, b) => compareStrings(
         users.find(user => user.id === a.scannedByUserId).name,
         users.find(user => user.id === b.scannedByUserId).name

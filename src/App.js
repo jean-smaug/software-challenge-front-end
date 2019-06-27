@@ -12,8 +12,8 @@ function App () {
 
   useEffect(() => {
     const sortedScans = sortScansBy(sorter, scans, users)
-    console.log(sortedScans)
-    // setScans(sortedScans)
+    
+    setScans(sortedScans)
   }, [sorter])
 
   return (
