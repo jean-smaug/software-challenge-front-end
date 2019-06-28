@@ -11,11 +11,24 @@ function ScanList ({ scans, users, isEditModeActive, setUsers }) {
         const user = users.find(u => u.id === scan.scannedByUserId)
         return (
           <div className='ScanList_Item' key={scan.id}>
-            {isEditModeActive ? <input value={scan.name} /> : <div>{scan.name}</div>} by
             {isEditModeActive ? (
-              <Select options={users} optionKey='name' />
+              <input onChange={() => {}} value={scan.name} />
             ) : (
-              <div>{user.name}</div>
+              <span>{scan.name}</span>
+            )}
+            by
+            {isEditModeActive ? (
+              <Select
+                options={users}
+                optionKey='name'
+                optionValue='id'
+                keyPrefix={scan.id}
+                onChange={({ target: { value } }) => {
+                  console.log(value)
+                }}
+              />
+            ) : (
+              <span>{user.name}</span>
             )}
             {scan.elevationMin}
             {scan.elevationMax}

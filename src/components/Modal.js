@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import uuid from 'uuid/v1'
+
+import Select from './Select'
 
 import './Modal.css'
 
@@ -9,8 +12,7 @@ function Modal ({ users, setModalVisibility, setScans, scans }) {
   const [elevationMax, setElevationMax] = useState(0)
 
   const addScan = () => {
-    setScans([...scans, { name, scannedByUserId, elevationMin, elevationMax }])
-    console.log([...scans, { name, scannedByUserId, elevationMin, elevationMax }])
+    setScans([...scans, { name, scannedByUserId, elevationMin, elevationMax, id: uuid() }])
     setModalVisibility(false)
   }
 
@@ -43,11 +45,13 @@ function Modal ({ users, setModalVisibility, setScans, scans }) {
       />
 
       <label>Associated user</label>
-      <select onChange={({ target: { value } }) => setScannedByUserId(Number(value))}>
-        {users.map(user => (
-          <option value={user.id}>{user.name}</option>
-        ))}
-      </select>
+      <Select
+        options={users}
+        optionKey='name'
+        optionValue='id'
+        keyPrefix='selectUser-'
+        onChange={({ target: { value } }) => setScannedByUserId(Number(value))}
+      />
 
       <button onClick={addScan}>Add</button>
     </div>
