@@ -1,11 +1,9 @@
 .Sorter {
-  width: 500px;
+  width: 80%;
+  max-width: 500px;
   color: white;
   display: flex;
   justify-content: space-between;
   margin: 20px auto;
+  padding: 0 10px;
 }
-
-.Sorter_Selector {}
-
-.Sorter_Inverted {}

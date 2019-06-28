@@ -12,6 +12,7 @@ function Modal({ users, setModalVisibility, setScans, scans }) {
   const [elevationMax, setElevationMax] = useState(0);
 
   const addScan = () => {
+    if (name === "") return;
     setScans([...scans, { name, scannedByUserId, elevationMin, elevationMax, id: uuid() }]);
     setModalVisibility(false);
   };
