@@ -12,7 +12,13 @@ function ScanList ({ scans, users, isEditModeActive, setScans }) {
         return (
           <div className='ScanList_Item' key={scan.id}>
             {isEditModeActive ? (
-              <input onChange={() => {}} value={scan.name} />
+              <input
+                onChange={({ target: { value } }) => {
+                  scan.name = value
+                  setScans([...scans])
+                }}
+                value={scan.name}
+              />
             ) : (
               <span className='ScanList_ItemTitle'>{scan.name}</span>
             )}
@@ -27,7 +33,7 @@ function ScanList ({ scans, users, isEditModeActive, setScans }) {
                   keyPrefix={scan.id}
                   onChange={({ target: { value } }) => {
                     scan.scannedByUserId = Number(value)
-                    setScans(scans)
+                    setScans([...scans])
                   }}
                 />
               ) : (

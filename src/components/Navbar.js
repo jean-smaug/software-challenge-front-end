@@ -22,7 +22,7 @@ function Navbar ({ isEditModeActive, setEditMode, isModalVisible, setModalVisibi
             Add scan
           </div>
           <div className='Navbar_Item' onClick={toggleEditMode}>
-            {isEditModeActive ? 'Save' : 'Active edit mode'}
+            {isEditModeActive ? 'Close edit mode' : 'Active edit mode'}
           </div>
         </div>
       </nav>
