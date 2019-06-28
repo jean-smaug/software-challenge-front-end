@@ -1,39 +1,40 @@
-import React from 'react'
-import FlipMove from 'react-flip-move'
-import Select from './Select'
+import React from "react";
+import FlipMove from "react-flip-move";
+import Select from "./Select";
 
-import './ScanList.css'
+import "./ScanList.css";
 
-function ScanList ({ scans, users, isEditModeActive, setScans }) {
+function ScanList({ scans, users, isEditModeActive, setScans }) {
   return (
-    <FlipMove className='ScanList'>
+    <FlipMove className="ScanList">
       {scans.map(scan => {
-        const user = users.find(u => u.id === scan.scannedByUserId)
+        const user = users.find(u => u.id === scan.scannedByUserId);
         return (
-          <div className='ScanList_Item' key={scan.id}>
+          <div className="ScanList_Item" key={scan.id}>
             {isEditModeActive ? (
               <input
                 onChange={({ target: { value } }) => {
-                  scan.name = value
-                  setScans([...scans])
+                  scan.name = value;
+                  setScans([...scans]);
                 }}
                 value={scan.name}
               />
             ) : (
-              <span className='ScanList_ItemTitle'>{scan.name}</span>
+              <span className="ScanList_ItemTitle">{scan.name}</span>
             )}
-            <span className='ScanList_ItemAuthor'>
-              {' '}
-              by{' '}
+            <span className="ScanList_ItemAuthor">
+              {" "}
+              by{" "}
               {isEditModeActive ? (
                 <Select
                   options={users}
-                  optionKey='name'
-                  optionValue='id'
+                  optionKey="name"
+                  optionValue="id"
+                  defaultValue={scan.scannedByUserId}
                   keyPrefix={scan.id}
                   onChange={({ target: { value } }) => {
-                    scan.scannedByUserId = Number(value)
-                    setScans([...scans])
+                    scan.scannedByUserId = Number(value);
+                    setScans([...scans]);
                   }}
                 />
               ) : (
@@ -43,10 +44,10 @@ function ScanList ({ scans, users, isEditModeActive, setScans }) {
             {/* {scan.elevationMin}
             {scan.elevationMax} */}
           </div>
-        )
+        );
       })}
     </FlipMove>
-  )
+  );
 }
 
-export default ScanList
+export default ScanList;

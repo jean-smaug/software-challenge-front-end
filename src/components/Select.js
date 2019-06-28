@@ -1,15 +1,17 @@
-import React from 'react'
+import React from "react";
 
-function Select ({ options, onChange, optionKey, optionValue, keyPrefix = '' }) {
+function Select({ options, onChange, optionKey, optionValue, keyPrefix = "", defaultValue }) {
   return (
-    <select onChange={onChange}>
-      {options.map(option => (
-        <option key={`${keyPrefix}${option.id}`} value={option[optionValue]}>
-          {option[optionKey]}
-        </option>
-      ))}
+    <select onChange={onChange} defaultValue={defaultValue}>
+      {options.map(option => {
+        return (
+          <option key={`${keyPrefix}${option.id}`} value={option[optionValue]}>
+            {option[optionKey]}
+          </option>
+        );
+      })}
     </select>
-  )
+  );
 }
 
-export default Select
+export default Select;
