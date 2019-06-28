@@ -34,6 +34,7 @@ function App () {
         users={users}
         setUsers={setUsers}
         isEditModeActive={isEditModeActive}
+        setScans={setScans}
       />
     </div>
   )

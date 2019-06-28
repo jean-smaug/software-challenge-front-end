@@ -4,7 +4,7 @@ import Select from './Select'
 
 import './ScanList.css'
 
-function ScanList ({ scans, users, isEditModeActive, setUsers }) {
+function ScanList ({ scans, users, isEditModeActive, setScans }) {
   return (
     <FlipMove className='ScanList'>
       {scans.map(scan => {
@@ -26,7 +26,8 @@ function ScanList ({ scans, users, isEditModeActive, setUsers }) {
                   optionValue='id'
                   keyPrefix={scan.id}
                   onChange={({ target: { value } }) => {
-                    console.log(value)
+                    scan.scannedByUserId = Number(value)
+                    setScans(scans)
                   }}
                 />
               ) : (
