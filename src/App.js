@@ -26,7 +26,7 @@ function App () {
       <Navbar {...{ isEditModeActive, setEditMode, isModalVisible, setModalVisibility }} />
       <header className='App-header'>Software Challenge</header>
       <Sorter sorter={sorter} setSorter={setSorter} />
-      <ScanList scans={scans} users={users} setUsers={setUsers} />
+      <ScanList scans={scans} users={users} setUsers={setUsers} isEditModeActive={isEditModeActive} />
     </div>
   )
 }
