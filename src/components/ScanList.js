@@ -14,9 +14,9 @@ function ScanList ({ scans, users, isEditModeActive, setUsers }) {
             {isEditModeActive ? (
               <input onChange={() => {}} value={scan.name} />
             ) : (
-              <span>{scan.name}</span>
-            )}
-            by
+              <span className='ScanList_ItemTitle'>{scan.name}</span>
+            )}{' '}
+            by{' '}
             {isEditModeActive ? (
               <Select
                 options={users}
@@ -30,8 +30,8 @@ function ScanList ({ scans, users, isEditModeActive, setUsers }) {
             ) : (
               <span>{user.name}</span>
             )}
-            {scan.elevationMin}
-            {scan.elevationMax}
+            {/* {scan.elevationMin}
+            {scan.elevationMax} */}
           </div>
         )
       })}

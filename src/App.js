@@ -28,7 +28,6 @@ function App () {
     <div className='App'>
       {isModalVisible && <Modal {...{ users, setModalVisibility, setScans, scans }} />}
       <Navbar {...{ isEditModeActive, setEditMode, isModalVisible, setModalVisibility }} />
-      <header className='App-header'>Software Challenge</header>
       <Sorter sorter={sorter} setSorter={setSorter} />
       <ScanList
         scans={scans}

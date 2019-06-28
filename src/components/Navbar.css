@@ -9,13 +9,23 @@
   height: 50px;
 }
 
+.Navbar_NavbarLeft {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+}
+
+.Navbar_NavbarTitle {
+  vertical-align: middle;
+  font-size: 1.3em;
+}
+
 .Navbar_NavbarRight {
   position: absolute;
-  right: 0;
+  right: 20px;
   height: 100%;
   display: flex;
   align-items: center;
-  margin-right: 20px;
 }
 
 .Navbar_Item {

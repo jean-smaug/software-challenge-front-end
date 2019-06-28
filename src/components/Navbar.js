@@ -12,16 +12,21 @@ function Navbar ({ isEditModeActive, setEditMode, isModalVisible, setModalVisibi
   }
 
   return (
-    <nav className='Navbar'>
-      <div className='Navbar_NavbarRight'>
-        <div className='Navbar_Item' onClick={toggleModalVisibility}>
-          Add scan
+    <>
+      <nav className='Navbar'>
+        <header className='Navbar_NavbarLeft'>
+          <span className='Navbar_NavbarTitle'>Software Challenge</span>
+        </header>
+        <div className='Navbar_NavbarRight'>
+          <div className='Navbar_Item' onClick={toggleModalVisibility}>
+            Add scan
+          </div>
+          <div className='Navbar_Item' onClick={toggleEditMode}>
+            {isEditModeActive ? 'Save' : 'Active edit mode'}
+          </div>
         </div>
-        <div className='Navbar_Item' onClick={toggleEditMode}>
-          {isEditModeActive ? 'Save' : 'Active edit mode'}
-        </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   )
 }
 
