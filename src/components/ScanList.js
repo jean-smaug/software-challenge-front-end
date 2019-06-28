@@ -15,21 +15,24 @@ function ScanList ({ scans, users, isEditModeActive, setUsers }) {
               <input onChange={() => {}} value={scan.name} />
             ) : (
               <span className='ScanList_ItemTitle'>{scan.name}</span>
-            )}{' '}
-            by{' '}
-            {isEditModeActive ? (
-              <Select
-                options={users}
-                optionKey='name'
-                optionValue='id'
-                keyPrefix={scan.id}
-                onChange={({ target: { value } }) => {
-                  console.log(value)
-                }}
-              />
-            ) : (
-              <span>{user.name}</span>
             )}
+            <span className='ScanList_ItemAuthor'>
+              {' '}
+              by{' '}
+              {isEditModeActive ? (
+                <Select
+                  options={users}
+                  optionKey='name'
+                  optionValue='id'
+                  keyPrefix={scan.id}
+                  onChange={({ target: { value } }) => {
+                    console.log(value)
+                  }}
+                />
+              ) : (
+                <span>{user.name}</span>
+              )}
+            </span>
             {/* {scan.elevationMin}
             {scan.elevationMax} */}
           </div>

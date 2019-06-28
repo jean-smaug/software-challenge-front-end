@@ -1,7 +1,7 @@
 import React from 'react'
 
-function Sorter ({ sorter, setSorter }) {
-  function handleChange ({ target: { value } }) {
+function Sorter ({ setSorter }) {
+  const handleChange = ({ target: { value } }) => {
     setSorter(value)
   }
 

@@ -16,3 +16,7 @@
 .ScanList_ItemTitle {
   font-size: 1.2em;
 }
+
+.ScanList_ItemAuthor {
+  float: right;
+}

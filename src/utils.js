@@ -1,5 +1,5 @@
 export function compareNumbers (a, b) {
-  return a - b
+  return b - a
 }
 
 export function compareStrings (a, b) {
@@ -9,11 +9,12 @@ export function compareStrings (a, b) {
   if (upperA < upperB) {
     return -1
   }
-  if (upperA > upperB) {
-    return 1
-  }
 
-  return 0
+  return 1
+}
+
+export function getUsername (scan, users) {
+  return users.find(user => user.id === scan.scannedByUserId).name
 }
 
 export function sortScansBy (sorter, scans, users) {
@@ -22,10 +23,7 @@ export function sortScansBy (sorter, scans, users) {
       return scans.sort((a, b) => compareStrings(a[sorter], b[sorter]))
 
     case 'username':
-      return scans.sort((a, b) => compareStrings(
-        users.find(user => user.id === a.scannedByUserId).name,
-        users.find(user => user.id === b.scannedByUserId).name
-      ))
+      return scans.sort((a, b) => compareStrings(getUsername(b, users), getUsername(a, users)))
 
     case 'elevationMin':
       return scans.sort((a, b) => compareNumbers(a[sorter], b[sorter]))

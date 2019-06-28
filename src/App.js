@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import uuid from 'uuid/v1'
 import './App.css'
 import ScanList from './components/ScanList'
@@ -8,8 +8,12 @@ import Modal from './components/Modal'
 import { createScanData, createUserData } from './data'
 import { sortScansBy } from './utils'
 
-const scansData = createScanData().map(scan => ({ ...scan, id: uuid() }))
 const usersData = createUserData()
+const scansData = sortScansBy(
+  'username',
+  createScanData().map(scan => ({ ...scan, id: uuid() })),
+  usersData
+)
 
 function App () {
   const [scans, setScans] = useState(scansData)
@@ -18,11 +22,7 @@ function App () {
   const [isEditModeActive, setEditMode] = useState(false)
   const [isModalVisible, setModalVisibility] = useState(false)
 
-  useEffect(() => {
-    const sortedScans = sortScansBy(sorter, scans, users)
-
-    setScans(sortedScans)
-  }, [sorter])
+  const sortedScans = sortScansBy(sorter, scans, users)
 
   return (
     <div className='App'>
@@ -30,7 +30,7 @@ function App () {
       <Navbar {...{ isEditModeActive, setEditMode, isModalVisible, setModalVisibility }} />
       <Sorter sorter={sorter} setSorter={setSorter} />
       <ScanList
-        scans={scans}
+        scans={sortedScans}
         users={users}
         setUsers={setUsers}
         isEditModeActive={isEditModeActive}
